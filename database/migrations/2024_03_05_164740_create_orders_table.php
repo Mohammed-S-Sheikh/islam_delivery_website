@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\City;
+use App\Models\Delegate;
 use App\Models\State;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->double('total');
             $table->integer('number_of_items');
             $table->foreignIdFor(City::class);
+            $table->foreignIdFor(Delegate::class);
             $table->foreignIdFor(State::class);
             $table->string('notes');
             $table->timestamps();
