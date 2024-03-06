@@ -16,6 +16,11 @@ class Order extends Model
         return $this->belongsTo(City::class);
     }
 
+    public function delegate()
+    {
+        return $this->belongsTo(Delegate::class);
+    }
+
     public function state()
     {
         return $this->belongsTo(State::class);

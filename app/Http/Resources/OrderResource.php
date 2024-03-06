@@ -23,8 +23,9 @@ class OrderResource extends JsonResource
             'customer_address' => $this->customer_address,
             'total' => $this->total,
             'number_of_items' => $this->number_of_items,
-            'city' => $this->whenLoaded('city', fn () => new CityResource($this->city)),
-            'state' => $this->whenLoaded('state', fn () => new StateResource($this->state)),
+            'city' => $this->whenLoaded('city', fn () => CityResource::make($this->city)),
+            'delegate' => $this->whenLoaded('delegate', fn () => DelegateResource::make($this->delegate)),
+            'state' => $this->whenLoaded('state', fn () => StateResource::make($this->state)),
             'notes' => $this->notes,
         ];
     }
