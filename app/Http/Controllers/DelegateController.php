@@ -22,7 +22,7 @@ class DelegateController extends Controller
      */
     public function store(StoreDelegateRequest $request)
     {
-        $delegate = Delegate::create($request->validated());
+        Delegate::create($request->validated());
 
         return response()->noContent();
     }

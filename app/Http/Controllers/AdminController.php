@@ -6,6 +6,7 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Http\Resources\AdminResource;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -22,6 +23,10 @@ class AdminController extends Controller
      */
     public function store(StoreAdminRequest $request)
     {
+        $request->merge([
+            'password' => Hash::make($request->password),
+        ]);
+
         Admin::create($request->validated());
 
         return response()->noContent();
@@ -40,6 +45,12 @@ class AdminController extends Controller
      */
     public function update(UpdateAdminRequest $request, Admin $admin)
     {
+        if ($request->has('password')) {
+            $request->merge([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
         $admin->update($request->validated());
 
         return AdminResource::make($admin);

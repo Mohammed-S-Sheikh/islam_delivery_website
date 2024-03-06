@@ -12,4 +12,9 @@ class Admin extends Authenticatable
     use HasApiTokens, HasFactory;
 
     protected $guarded = [];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 }
