@@ -30,6 +30,7 @@ class StoreOrderRequest extends FormRequest
             'total' => ['required', 'numeric', 'min:0'],
             'number_of_items' => ['required', 'numeric', 'min:0'],
             'city_id' => ['required', 'exists:cities,id'],
+            'delegate_id' => ['required', 'exists:delegates,id'],
             'state_id' => ['required', 'exists:states,id'],
             'notes' => ['nullable', 'string'],
         ];
